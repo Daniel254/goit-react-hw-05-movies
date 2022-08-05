@@ -1,6 +1,6 @@
 import { getMovieDetails } from 'api/tmdbApi';
 import { TMDB_IMAGE_BASE_URL } from 'constants/tmdb';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 export default function MovieDetails() {
@@ -14,7 +14,7 @@ export default function MovieDetails() {
       .then(setMovie)
       .catch(error => setError(error.message));
   }, [movieId]);
-  console.log('location.state', location.state);
+
   if (!movie) {
     return error && <h1>{error}</h1>;
   }
@@ -54,7 +54,9 @@ export default function MovieDetails() {
         </li>
       </ul>
       <hr />
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
