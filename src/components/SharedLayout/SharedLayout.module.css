@@ -1,0 +1,16 @@
+.app-bar {
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.app-bar a {
+  color: #3c3c3c;
+  padding: 0 10px;
+  line-height: 3;
+  text-decoration: none;
+}
+.app-bar a:hover {
+  text-decoration: underline;
+}
+.app-bar a[class='active'] {
+  color: #d77b8e;
+}
